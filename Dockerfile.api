@@ -1,0 +1,24 @@
+# Dockerfile.api
+
+# 1. Используем базовый образ
+FROM python:3.11-slim
+
+# 2. Рабочая директория
+WORKDIR /app
+
+# 3. Копируем только нужные файлы для установки зависимостей
+COPY requirements.txt .
+
+# 4. Устанавливаем только нужные библиотеки
+RUN pip install --upgrade pip \
+ && pip install -r requirements.txt
+
+# 5. Копируем весь проект внутрь контейнера
+COPY . .
+
+# 6. Открываем порт
+EXPOSE 8000
+
+# 7. Запуск API
+CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+

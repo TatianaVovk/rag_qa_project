@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  query_service:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    ports:
+      - "8000:8000"  
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+  indexing_service:
+    build:
+      context: .
+      dockerfile: Dockerfile.indexing
+    volumes:
+      - .:/app
+    profiles:
+      - indexing

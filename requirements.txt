@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+transformers
+sentence-transformers
+faiss-cpu
+pydantic
+python-dotenv
+# pytest
+requests
+ctransformers
+torch
+
+
